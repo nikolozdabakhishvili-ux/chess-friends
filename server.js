@@ -114,3 +114,7 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+const path = require('path');
+
+// ეს ხაზი ზუსტად მიუთითებს სერვერს, რომ public ფოლდერი არის მთავარი სტატიკური ზონა
+app.use(express.static(path.join(__dirname, 'public')));
