@@ -1,0 +1,482 @@
+:root {
+    --bg-main: #0a0d14;
+    --board-light: #e2d6b5;
+    --board-dark: #7a9a60;
+    --accent-gold: #f5c542;
+    --accent-glow: rgba(245, 197, 66, 0.4);
+    --glass-bg: rgba(18, 24, 38, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f0f4f8;
+    --text-secondary: #8a99ad;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ფონის ნეონის განათებები */
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(122, 154, 96, 0.15), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(245, 197, 66, 0.12), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(15, 21, 32, 0.8), #0a0d14);
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: min(1000px, 94%);
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 12px 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.online {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+.online span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 12px #00ff88;
+}
+
+/* Home Screen */
+.home {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.big-piece {
+    font-size: 110px;
+    line-height: 1;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    animation: float 4s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+h1 span {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.primary {
+    width: 100%;
+    padding: 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f5c542, #e0a82e);
+    color: #0d1117;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 25px var(--accent-glow);
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px var(--accent-glow);
+}
+
+.join-box {
+    display: flex;
+    gap: 10px;
+}
+
+.join-box input {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    outline: none;
+    background: var(--glass-bg);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 4px;
+    backdrop-filter: blur(10px);
+}
+
+.join-box input:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.join-box button {
+    padding: 0 28px;
+    border-radius: 14px;
+    background: #1a2332;
+    color: white;
+    font-weight: 800;
+    border: 1px solid var(--glass-border);
+}
+
+.join-box button:hover {
+    background: #243044;
+    transform: translateY(-2px);
+}
+
+.message {
+    min-height: 24px;
+    margin-top: 15px;
+    color: #ff5555;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Game Screen */
+.game {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.game-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-secondary);
+}
+
+.game-top strong {
+    color: var(--accent-gold);
+    letter-spacing: 3px;
+}
+
+.game-top button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.players {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.player-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 22px;
+}
+
+.player-card small {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.player-card strong {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.turn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(245, 197, 66, 0.1);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Ultra Board Design */
+.board-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.board {
+    width: min(88vw, 540px);
+    height: min(88vw, 540px);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 0 10px rgba(255, 255, 255, 0.03);
+    border: 2px solid var(--glass-border);
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ფიგურის ფიქსირებული ზომა */
+    font-size: clamp(30px, 7.5vw, 54px); 
+    line-height: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    /* აუქმებს ტექსტის არჩევასა და დაჭერისას ზომის ცვლილებას */
+    touch-action: manipulation;
+    transition: background-color 0.15s ease;
+}
+
+/* ფიგურის ტექსტის პოზიციის დაფიქსირება */
+.square::selection {
+    background: transparent;
+}
+
+.square:hover {
+    filter: brightness(1.1);
+}
+
+.square:active {
+    /* აუქმებს დაჭერისას ფიგურის შემცირებას/მოძრაობას */
+    transform: none !important; 
+}
+
+.light {
+    background-color: var(--board-light);
+    color: #1a1a1a;
+}
+
+.dark {
+    background-color: var(--board-dark);
+    color: #1a1a1a;
+}
+
+/* არჩეული უჯრის ნეონის ეფექტი */
+.selected {
+    position: relative;
+    background-color: #d4b843 !important;
+    box-shadow: inset 0 0 0 4px var(--accent-gold);
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-glow);
+    pointer-events: none;
+}
+
+.game-buttons {
+    margin-top: 15px;
+}
+
+.game-buttons button {
+    padding: 10px 22px;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.game-buttons button:hover {
+    background: rgba(255, 85, 85, 0.2);
+    border-color: #ff5555;
+    color: #ff5555;
+}
+
+.game-message {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ანიმაციები */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header {
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .big-piece {
+        font-size: 80px;
+    }
+
+    .players {
+        gap: 8px;
+    }
+
+    .player-card {
+        padding: 6px 10px;
+    }
+
+    .turn {
+        font-size: 9px;
+        padding: 6px 10px;
+    }
+}
+/* შესაძლო სვლის მინიშნების ეფექტი */
+.possible-move {
+    position: relative;
+}
+
+/* ცარიელ უჯრაზე - ღია ყვითელი წერტილი */
+.possible-move::before {
+    content: '';
+    position: absolute;
+    width: 26%;
+    height: 26%;
+    background-color: rgba(245, 197, 66, 0.85);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(245, 197, 66, 0.9);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* თუ უჯრაზე მოწინააღმდეგის ფიგურაა - მთლიანი უჯრა განათდეს ღია ყვითლად/წითლად */
+.possible-move:has(div), 
+.possible-move:not(:empty)::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-color: rgba(245, 197, 66, 0.35);
+    box-shadow: inset 0 0 0 3px rgba(245, 197, 66, 0.8);
+}

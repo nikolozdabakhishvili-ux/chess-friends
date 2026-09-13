@@ -1,0 +1,14 @@
+{
+  "name": "online-chess",
+  "version": "1.0.0",
+  "description": "Online multiplayer chess",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "chess.js": "^0.10.3",
+    "express": "^4.19.2",
+    "socket.io": "^4.8.1"
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- საიტის სახელი და აღწერა Google-ისთვის -->
+    <title>Chess Friend - Play Online Chess with Friends</title>
+    <meta name="description" content="Play online chess with friends in real-time on Chess Friend. Create room codes and challenge players instantly for free.">
+    <meta name="keywords" content="Chess Friend, chess friend online, play chess with friends, multiplayer chess">
+    
+    <!-- შრიფტი და სტილები -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <main class="container">
+        <header>
+            <div class="logo">♟ CHESS</div>
+            <div class="online">
+                <span></span> ONLINE
+            </div>
+        </header>
+
+        <section class="home" id="home">
+            <div class="hero">
+                <div class="big-piece">♞</div>
+                <div>
+                    <h1>ONLINE<br><span>CHESS</span></h1>
+                    <p>Challenge your friend to a real-time chess battle.</p>
+                </div>
+            </div>
+
+            <div class="menu">
+                <button class="primary" id="createGame">CREATE GAME</button>
+                <div class="join-box">
+                    <input id="roomCode" type="text" maxlength="6" placeholder="ENTER ROOM CODE">
+                    <button id="joinGame">JOIN</button>
+                </div>
+            </div>
+
+            <div class="message" id="message"></div>
+        </section>
+
+        <section class="game hidden" id="game">
+            <div class="game-top">
+                <div>ROOM: <strong id="roomDisplay">------</strong></div>
+                <button id="copyRoom">COPY CODE</button>
+            </div>
+
+            <div class="players">
+                <div class="player-card">
+                    <div class="avatar">♙</div>
+                    <div>
+                        <small>WHITE</small>
+                        <strong id="whiteStatus">Waiting...</strong>
+                    </div>
+                </div>
+
+                <div class="turn" id="turnDisplay">WAITING</div>
+
+                <div class="player-card">
+                    <div class="avatar">♟</div>
+                    <div>
+                        <small>BLACK</small>
+                        <strong id="blackStatus">Waiting...</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-wrapper">
+                <div class="board" id="board"></div>
+            </div>
+
+            <div class="game-buttons">
+                <button id="backHome">LEAVE GAME</button>
+            </div>
+
+            <div class="game-message" id="gameMessage"></div>
+        </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- ლოკალური /chess.js-ის ნაცვლად გამოიყენე CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
