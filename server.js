@@ -70,7 +70,7 @@ io.on("connection", (socket) => {
 
         // შემოწმება, ნამდვილად ამ მოთამაშის სვლაა თუ არა
         const playerColor = game.players.white === socket.id ? "w" :
-                           game.players.black === socket.id ? "b" : null;
+                            game.players.black === socket.id ? "b" : null;
 
         if (!playerColor || game.chess.turn() !== playerColor) {
             return socket.emit("invalidMove");
@@ -114,7 +114,3 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-const path = require('path');
-
-// ეს ხაზი ზუსტად მიუთითებს სერვერს, რომ public ფოლდერი არის მთავარი სტატიკური ზონა
-app.use(express.static(path.join(__dirname, 'public')));
